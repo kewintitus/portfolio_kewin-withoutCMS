@@ -26,13 +26,9 @@ function ExperienceCard({ experience }: Props) {
         viewport={{ once: true }}
         className="bg-transparent  w-[50px] h-[50px] relative overflow-hidden "
       >
-        <Image
-          src="/../public/res/illuminei-logo.png"
-          width={100}
-          height={100}
-          blurDataURL="data:..."
-          placeholder="blur"
-          className="object-cover mt-1 align-bottom"
+        <img
+          src="https://cdn.sanity.io/images/eq7abb07/production/9e2260eb64c673f520b04c0e635b8eda1e747f8c-563x530.png"
+          className="object-cover w-[50px] h-[50px] mt-1 align-bottom"
           alt="illuminei logo"
         />
       </motion.div>
