@@ -56,13 +56,13 @@ function Header() {
         transition={{ duration: 1.5 }}
         className=" flex flex-row items-center content-center cursor-pointer"
       >
-        <SocialIcon
-          network="email"
-          fgColor="gray"
-          bgColor="transparent"
-          className=" cursor-pointer "
-        />
         <Link href="#contact">
+          <SocialIcon
+            network="email"
+            fgColor="gray"
+            bgColor="transparent"
+            className=" cursor-pointer "
+          />
           <p className=" uppercase hidden md:inline-flex text-sm text-gray-400 ">
             Get in touch
           </p>

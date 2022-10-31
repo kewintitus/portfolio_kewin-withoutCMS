@@ -89,7 +89,7 @@ function Projects() {
             key={project?._id}
             className="flex flex-col w-screen relative items-center justify-center p-32 md:p-44 snap-center"
           >
-            <div className=" mx-auto my-auto mb-3">
+            <div className=" mx-auto my-auto mb-3 sm:w-[300px] sm:h-[275px] md:w-[400px] md:h-auto ">
               {' '}
               <motion.img
                 initial={{
@@ -108,7 +108,7 @@ function Projects() {
               <h4 className="underline decoration-red-600 text-gray-300">
                 {project?.title}
               </h4>
-              <p className="text-lg font-normal text-gray-400">
+              <p className="text-sm md:text-lg font-normal text-gray-400">
                 {project?.summary}
               </p>
             </div>
