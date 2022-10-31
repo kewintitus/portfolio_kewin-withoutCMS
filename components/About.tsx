@@ -31,16 +31,12 @@ function About() {
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
-        className="bg-transparent rounded-full w-[150px] h-[150px] mt-14 md:mt-10 overflow-hidden relative self-center flex content-center justify-center flex-shrink-0  md:mb-0
-         md:rounded-lg md:w-40 md:h-60 xl:w-[250px] xl:h-[350px] "
+        className="bg-transparent rounded-full w-[150px] h-[150px]  overflow-hidden relative self-center flex content-center justify-center flex-shrink-0  md:mb-0
+         md:rounded-lg md:w-40 md:h-60 xl:w-[250px] xl:h-[350px] object-cover "
       >
-        <Image
-          src="/../public/res/KewinC1.jpg"
-          width={300}
-          height={300}
-          blurDataURL="data:..."
-          placeholder="blur"
-          className="object-cover mt-1 align-bottom bg-transparent"
+        <img
+          src="https://cdn.sanity.io/images/eq7abb07/production/b654ca01aebfc9d87dae474e6bed1b9530d0ac68-2218x2116.jpg"
+          className="object-center object-cover mt-1 align-bottom bg-transparent w-[150px] h-[150px] md:rounded-lg md:w-40 md:h-60  xl:w-[250px] xl:h-[350px]"
           alt="profile pic"
         />
       </motion.div>
@@ -68,3 +64,15 @@ function About() {
 }
 
 export default About;
+
+{
+  /* <Image
+          src="/../public/res/KewinC1.jpg"
+          width={300}
+          height={300}
+          blurDataURL="data:..."
+          placeholder="blur"
+          className="object-cover mt-1 align-bottom bg-transparent w-[150px] h-[150px] md:rounded-lg md:w-40 md:h-60  xl:w-[250px] xl:h-[350px]"
+          alt="profile pic"
+        /> */
+}
