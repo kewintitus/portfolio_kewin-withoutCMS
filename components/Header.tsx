@@ -12,7 +12,6 @@ type Props = {
 const socials = [
   { url: 'https://www.linkedin.com/in/kewin-titus-ba570417a', id: 1 },
   { url: 'https://github.com/kewintitus', id: 2 },
-  { url: 'https://twitter.com/KewinTitus', id: 3 },
 ];
 
 function Header() {
