@@ -123,6 +123,9 @@ function Projects() {
           </div>
         ))}
       </div>
+      <div className="absolute bottom-16 text-gray-400 text-xs md:text-xs">
+        Please scroll left to view all projects
+      </div>
 
       <div className="w-full absolute top-[30%] h-[40%] bg-red-800 opacity-20 -skew-y-6 z-10"></div>
     </motion.div>
