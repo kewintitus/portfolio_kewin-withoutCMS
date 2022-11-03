@@ -87,7 +87,7 @@ function Projects() {
         {projects.map((project) => (
           <div
             key={project?._id}
-            className="flex flex-col w-screen relative items-center justify-center p-32 md:p-44 snap-center"
+            className="flex flex-col w-screen relative items-center justify-center p-32 md:px-[450px] snap-center"
           >
             <div className=" mx-auto my-auto mb-3 sm:w-[300px] sm:h-[275px] md:w-[400px] md:h-auto ">
               {' '}
