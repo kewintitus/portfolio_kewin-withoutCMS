@@ -34,11 +34,12 @@ const projects = [
   {
     _id: 3,
     image:
-      'https://cdn.sanity.io/images/eq7abb07/production/d003afb3978c1f8efcdbd3947d2c98b95f73bbac-1920x884.png',
-    title: 'Natours website',
-    summary: 'Desktop and mobile responsive website built with HTML, CSS, SASS',
-    gitHubLink: 'https://github.com/kewintitus/Natours',
-    siteLink: 'https://eclectic-pasca-d5dcd9.netlify.app/',
+      'https://cdn.sanity.io/images/eq7abb07/production/48c91ecb4921758cdb03a7401499daceb5978c30-1902x876.png',
+    title: 'Workout logger',
+    summary:
+      'A Workout logging app built with JavaScript and Leaflet library which can be used to log running and cycling workouts marked on a map',
+    gitHubLink: 'https://github.com/kewintitus/Workout-logger',
+    siteLink: 'https://comforting-shortbread-66e591.netlify.app/',
   },
   {
     _id: 4,
@@ -51,6 +52,16 @@ const projects = [
   },
   {
     _id: 5,
+    image:
+      'https://cdn.sanity.io/images/eq7abb07/production/d003afb3978c1f8efcdbd3947d2c98b95f73bbac-1920x884.png',
+    title: 'Natours website',
+    summary: 'Desktop and mobile responsive website built with HTML, CSS, SASS',
+    gitHubLink: 'https://github.com/kewintitus/Natours',
+    siteLink: 'https://eclectic-pasca-d5dcd9.netlify.app/',
+  },
+
+  {
+    _id: 6,
     image:
       'https://cdn.sanity.io/images/eq7abb07/production/5163c95633d8ca5401ea0b86d2900302e7c2d12f-1898x884.png',
     title: 'Omnifood website',
