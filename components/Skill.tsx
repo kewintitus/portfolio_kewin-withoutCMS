@@ -9,9 +9,9 @@ type Props = {
 
 function Skill({ svg, directionLeft, name }: Props) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-0">
       <motion.div
-        initial={{ x: directionLeft ? -100 : 100, opacity: 0 }}
+        initial={{ x: directionLeft ? -50 : 50, opacity: 0 }}
         transition={{ duration: 1.2 }}
         whileInView={{ opacity: 1, x: 0 }}
         className="flex flex-col justify-center justify-self-end"
