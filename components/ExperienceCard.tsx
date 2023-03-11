@@ -27,13 +27,13 @@ function ExperienceCard({ experience }: Props) {
         className="bg-transparent  w-[50px] h-[50px] relative overflow-hidden "
       >
         <img
-          src="https://cdn.sanity.io/images/eq7abb07/production/9e2260eb64c673f520b04c0e635b8eda1e747f8c-563x530.png"
-          className="object-cover w-[50px] h-[50px] mt-1 align-bottom"
+          src={`${experience.companyImage}`}
+          className="object-contain w-[100px]  mt-1 align-bottom"
           alt="illuminei logo"
         />
       </motion.div>
       <div className="px-6">
-        <h4 className=" text-3xl "> Engineer-I</h4>
+        <h4 className=" text-3xl "> {experience.jobTitle}</h4>
         <p className="text-xl font-bold mt-2">{experience?.company}</p>
         <div className="flex space-x-2 my-2">
           <svg

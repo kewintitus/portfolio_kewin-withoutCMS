@@ -11,12 +11,26 @@ const experiences = [
     _id: 1,
     jobTitle: 'Engineer-I',
 
-    companyImage: 'companyImage',
+    companyImage:
+      'https://cdn.sanity.io/images/eq7abb07/production/9e2260eb64c673f520b04c0e635b8eda1e747f8c-563x530.png',
 
     company: 'Illumine-I',
 
     dateStarted: 'April 2021',
     dateEnded: 'August 2022',
+    isCurrentlyWorkingHere: false,
+  },
+  {
+    _id: 2,
+    jobTitle: 'Full Stack Developer',
+
+    companyImage:
+      'https://cdn.sanity.io/images/eq7abb07/production/4cc8c005921fb12cdbb21d0c3a5d86b9828b50e0-5000x3178.png',
+
+    company: 'TVS Electronics',
+
+    dateStarted: 'January 2023',
+    dateEnded: 'Present',
     isCurrentlyWorkingHere: false,
   },
 ];
