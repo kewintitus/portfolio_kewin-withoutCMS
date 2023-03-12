@@ -29,7 +29,7 @@ function Hero() {
       </div>
       <div className="z-20">
         <h2 className="text-sm uppercase text-gray-400 tracking-widest ">
-          React Developer
+          Full Stack Developer
         </h2>
         <h1 className="text-3xl font-semibold py-0 my-0">
           <span className="">{text}</span>

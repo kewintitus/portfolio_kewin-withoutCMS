@@ -47,4 +47,6 @@ export interface Experience extends SanityBody {
   jobTitle: string;
   dateEnded: string;
   dateStarted: string;
+  jd?: Array;
+  svgs?: Array;
 }
