@@ -34,6 +34,16 @@ const projects = [
   {
     _id: 3,
     image:
+      'https://cdn.sanity.io/images/eq7abb07/production/313f1ffa5affaadc0107a06a1d1296cd492b3a14-1886x873.png',
+    title: 'Prompt App',
+    summary:
+      'App to store frequently used AI Prompts for easy access built with Next.js, NextAuth, TailwindCSS, MongoDB',
+    gitHubLink: 'https://github.com/kewintitus/prompt-app',
+    siteLink: 'https://prompt-app-ten.vercel.app/',
+  },
+  {
+    _id: 4,
+    image:
       'https://cdn.sanity.io/images/eq7abb07/production/48c91ecb4921758cdb03a7401499daceb5978c30-1902x876.png',
     title: 'Workout logger',
     summary:
@@ -42,7 +52,7 @@ const projects = [
     siteLink: 'https://comforting-shortbread-66e591.netlify.app/',
   },
   {
-    _id: 4,
+    _id: 5,
     image:
       'https://cdn.sanity.io/images/eq7abb07/production/6fbdbfee03b88c92ef62622ab9ed68229b30263c-1898x874.png',
     title: 'Weather App',
@@ -51,7 +61,7 @@ const projects = [
     siteLink: 'https://snazzy-bavarois-0e1c44.netlify.app/',
   },
   {
-    _id: 5,
+    _id: 6,
     image:
       'https://cdn.sanity.io/images/eq7abb07/production/d003afb3978c1f8efcdbd3947d2c98b95f73bbac-1920x884.png',
     title: 'Natours website',
@@ -61,7 +71,7 @@ const projects = [
   },
 
   {
-    _id: 6,
+    _id: 7,
     image:
       'https://cdn.sanity.io/images/eq7abb07/production/5163c95633d8ca5401ea0b86d2900302e7c2d12f-1898x884.png',
     title: 'Omnifood website',
