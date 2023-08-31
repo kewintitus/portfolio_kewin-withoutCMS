@@ -14,6 +14,16 @@ const projects = [
   {
     _id: 1,
     image:
+      'https://cdn.sanity.io/images/eq7abb07/production/93a06f6f4d6a448c978d2028f437a98a31d37557-1917x867.png',
+    title: 'ExpenSync',
+    summary:
+      "An application that helps manage one's daily expense and helps analyze their spending and income trends.Full stack application built with Next.js, React.js, TailwindCSS, Node.js and MongoDB.Compatible with all mobile and large screen devices",
+    gitHubLink: 'https://github.com/kewintitus/expense-manager',
+    siteLink: 'https://expensync.vercel.app/',
+  },
+  {
+    _id: 2,
+    image:
       'https://cdn.sanity.io/images/eq7abb07/production/e4bfe8d3ccd675b5b09502ba84742cad26c4c0d9-1900x890.png',
     title: 'Gmail clone',
     summary:
@@ -22,7 +32,7 @@ const projects = [
     siteLink: 'https://clone-60e58.web.app/',
   },
   {
-    _id: 2,
+    _id: 3,
     image:
       'https://cdn.sanity.io/images/eq7abb07/production/52687cd1a849e2000fc7f5b0208243b726233862-1898x884.png',
     title: 'LinkedIn clone',
@@ -32,7 +42,7 @@ const projects = [
     siteLink: 'https://linkedin-clone-3782c.web.app/',
   },
   {
-    _id: 3,
+    _id: 4,
     image:
       'https://cdn.sanity.io/images/eq7abb07/production/313f1ffa5affaadc0107a06a1d1296cd492b3a14-1886x873.png',
     title: 'Prompt App',
@@ -42,7 +52,7 @@ const projects = [
     siteLink: 'https://prompt-app-ten.vercel.app/',
   },
   {
-    _id: 4,
+    _id: 5,
     image:
       'https://cdn.sanity.io/images/eq7abb07/production/48c91ecb4921758cdb03a7401499daceb5978c30-1902x876.png',
     title: 'Workout logger',
@@ -52,7 +62,7 @@ const projects = [
     siteLink: 'https://comforting-shortbread-66e591.netlify.app/',
   },
   {
-    _id: 5,
+    _id: 6,
     image:
       'https://cdn.sanity.io/images/eq7abb07/production/6fbdbfee03b88c92ef62622ab9ed68229b30263c-1898x874.png',
     title: 'Weather App',
@@ -61,7 +71,7 @@ const projects = [
     siteLink: 'https://snazzy-bavarois-0e1c44.netlify.app/',
   },
   {
-    _id: 6,
+    _id: 7,
     image:
       'https://cdn.sanity.io/images/eq7abb07/production/d003afb3978c1f8efcdbd3947d2c98b95f73bbac-1920x884.png',
     title: 'Natours website',
@@ -71,7 +81,7 @@ const projects = [
   },
 
   {
-    _id: 7,
+    _id: 8,
     image:
       'https://cdn.sanity.io/images/eq7abb07/production/5163c95633d8ca5401ea0b86d2900302e7c2d12f-1898x884.png',
     title: 'Omnifood website',
