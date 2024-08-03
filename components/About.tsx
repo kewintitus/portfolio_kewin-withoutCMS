@@ -53,10 +53,12 @@ function About() {
           background
         </h4>
         <p className="text-sm mt-4 md:leading-6 mb-7 text-gray-400">
-          An enthusiastic self-taught frontend developer, who is passionate in
-          building responsive and scalable UI. Proficient in JavaScript, React
-          and Redux. Looking for a challenging environment where I can put my
-          technical skill to build UX rich web apps and websites.
+          An enthusiastic and experienced full stack developer, passionate about
+          building responsive and scalable web applications. Proficient in
+          JavaScript, React, and Redux, I am dedicated to creating UX-rich web
+          apps and websites. I am seeking a challenging environment where I can
+          leverage my technical skills to develop innovative solutions and
+          enhance user experiences.
         </p>
       </motion.div>
     </motion.div>
