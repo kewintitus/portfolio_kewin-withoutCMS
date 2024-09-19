@@ -12,7 +12,11 @@ type Props = {
 
 function Hero() {
   const [text, count] = useTypewriter({
-    words: [`Hi I'm Kewin`, 'Loves to <Code/>'],
+    words: [
+      `Hi I'm Kewin`,
+      'Loves to <Build Innovative Solutions/>',
+      'Loves to <Code/>',
+    ],
     loop: true,
     delaySpeed: 2000,
   });
