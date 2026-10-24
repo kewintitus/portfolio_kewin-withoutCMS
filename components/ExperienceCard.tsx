@@ -1,81 +1,66 @@
-import Image from 'next/image';
-import { motion } from 'framer-motion';
 import React from 'react';
-import { SocialIcon } from 'react-social-icons';
-import { Experience } from '../typings';
+
+export type ExperienceItem = {
+  _id: number;
+  jobTitle: string;
+  companyImage: string;
+  company: string;
+  dateStarted: string;
+  dateEnded: string;
+  isCurrentlyWorkingHere: boolean;
+  jd: string[];
+  svgs: React.ReactNode[];
+};
 
 type Props = {
-  experience: Experience;
+  experience: ExperienceItem;
 };
 
 function ExperienceCard({ experience }: Props) {
+  const dates = `${experience.dateStarted} – ${
+    experience.isCurrentlyWorkingHere ? 'Present' : experience.dateEnded
+  }`;
+
   return (
-    <article
-      className="flex flex-col items-center
-     bg-[#292929]  rounded-lg space-y-7 
-     flex-shrink-0 w-[300px] md:w-[400px]
-      xl:w-[400px] xl:mx-5 p-1 md:p-5  md:opacity-40 cursor-pointer 
-      md:hover:opacity-100 md:transition-opacity md:duration-500"
-    >
-      <motion.div
-        initial={{
-          y: -10,
-          opacity: 0,
-        }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="bg-transparent  w-[50px] h-[50px] relative overflow-hidden "
-      >
-        <img
-          src={`${experience.companyImage}`}
-          className="object-contain w-[100px]  mt-20 align-bottom"
-          alt="logo"
-        />
-      </motion.div>
-      <div className="px-6">
-        <span className="w-16">
-          <img className="w-16" src={`${experience.companyImage}`}></img>
-        </span>
-        <h4 className=" text-2xl "> {experience.jobTitle}</h4>
-        <p className="text-xl font-bold mt-2">{experience?.company}</p>
-        <div className="flex space-x-2 my-2 flex-wrap">
-          {experience.svgs.map((ico: any) => {
-            return ico;
-          })}
+    <article className="w-full rounded-2xl bg-[#292929] px-4 py-4 shadow-lg shadow-black/20 md:px-10 md:py-8">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-3">
+          <div className="flex h-12 w-20 shrink-0 items-center justify-center rounded-xl bg-[#1c1c1c] px-2 md:h-16 md:w-28">
+            <img
+              src={experience.companyImage}
+              alt={`${experience.company} logo`}
+              className="max-h-8 w-auto max-w-[4.5rem] object-contain md:max-h-12 md:max-w-[6.5rem]"
+            />
+          </div>
+          <div>
+            <h4 className="text-lg font-semibold tracking-tight md:text-2xl">
+              {experience.jobTitle}
+            </h4>
+            <p className="text-base font-medium text-gray-200 md:mt-1 md:text-lg">
+              {experience.company}
+            </p>
+          </div>
         </div>
-        <p className="uppercase text-gray-300">
-          {experience?.dateStarted}-
-          {experience?.isCurrentlyWorkingHere
-            ? 'Present'
-            : experience?.dateEnded}
+        <p className="text-xs uppercase tracking-[0.14em] text-gray-400 md:text-sm">
+          {dates}
         </p>
-        <ul className="list-disc space-y-2 text-sm  overflow-y-scroll text-gray-400 mt-4 overflow-scroll scrollbar-thin">
-          {experience.jd.map((li: any) => (
-            <li key={li}>{li}</li>
-          ))}
-        </ul>
       </div>
+
+      <div className="mt-4 flex flex-wrap items-center gap-2 [&_img]:h-8 [&_img]:w-8 [&_svg]:h-8 [&_svg]:w-8 md:gap-3 md:[&_img]:h-9 md:[&_img]:w-9 md:[&_svg]:h-9 md:[&_svg]:w-9">
+        {experience.svgs.map((icon, index) => (
+          <span key={index} className="flex h-8 w-8 items-center justify-center md:h-9 md:w-9">
+            {icon}
+          </span>
+        ))}
+      </div>
+
+      <ul className="mt-4 grid list-disc grid-cols-1 gap-x-10 gap-y-2 pl-4 text-[13px] leading-5 text-gray-300 md:mt-6 md:gap-y-2.5 md:pl-5 md:text-sm md:leading-6 md:grid-cols-2">
+        {experience.jd.map((point) => (
+          <li key={point}>{point}</li>
+        ))}
+      </ul>
     </article>
   );
 }
 
 export default ExperienceCard;
-
-/** Legacy
- * 
- * Date
- * <p className="uppercase text-gray-300">
-          {new Date(experience?.dateStarted).toLocaleDateString('en-US', {
-            month: 'long',
-            year: 'numeric',
-          })}
-          -
-          {experience?.isCurrentlyWorkingHere
-            ? 'Present'
-            : new Date(experience?.dateEnded).toLocaleDateString('en-US', {
-                month: 'long',
-                year: 'numeric',
-              })}
-        </p>
- * 
-*/

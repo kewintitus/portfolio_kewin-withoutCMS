@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import ExperienceCard from './ExperienceCard';
-import { Experience } from '../typings';
 
 // type Props = {
 //   experiences: Experience[];
@@ -160,76 +160,207 @@ const mongoDB = (
     <path fill="#81c784" d="M24,10c0,0-6,5-6,13c0,5.2,3.3,8.5,5,10l1-3V10z" />
   </svg>
 );
-const sql = (
-  <svg height="50" width="48" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="m-68.256041 544.14439c-3.2225-.64097-6.0047-2.84478-7.3573-5.82793-.595-1.31236-.8482-2.55217-.8438-4.13316.012-4.5438 2.8692-8.33798 7.3079-9.70579.8177-.25196 1.3573-.31847 2.611-.32182.8692-.002 1.8277.0437 2.1301.10227l.5497.10649.6765-1.31365c1.3815-2.68242 3.5345-4.78981 6.3178-6.18379 2.2961-1.15 3.739-1.48443 6.4043-1.48443 1.8668 0 2.2999.045 3.5043.36412 5.2011 1.37813 9.255 5.45998 10.5309 10.60353.3195 1.2879.4789 4.17568.293 5.30849l-.1269.77355.7284.163c1.8256.40854 3.4011 1.68396 4.2066 3.40532.7966 1.70226.6508 3.90495-.3651 5.51414-.5185.82136-1.535 1.73424-2.3832 2.14031-.4348.20813-.8979.43475-1.0292.50361-.2947.15465-32.3751.14085-33.155-.0143zm33.351-1.89876c.9026-.44879 1.7953-1.45217 2.1662-2.43497.7697-2.03891-.2571-4.40792-2.3055-5.31934-.5173-.23017-.9037-.28342-1.9824-.27321-.737.007-1.3399-.0395-1.3399-.10328 0-.0638.1369-.66194.3042-1.32926.428-1.70717.4237-4.42927-.01-6.09178-.9556-3.66584-3.4332-6.72357-6.8221-8.4192-1.4892-.74512-2.9056-1.08594-4.841-1.16493-2.8639-.11687-4.8633.33445-7.0666 1.59507-2.5693 1.47003-4.784 4.13385-5.6425 6.78661-.1651.51018-.3653.9268-.4449.92583-.08-.00096-.5467-.13408-1.038-.29579-1.3668-.44991-3.6978-.42255-5.0619.0594-1.3731.48513-2.3616 1.10694-3.3908 2.13292-1.5427 1.53788-2.3996 3.63391-2.3996 5.86959 0 3.32007 1.8288 6.23059 4.8041 7.64574 1.71.81331 1.1183.78892 18.4849.76186l15.941-.0248.6444-.32043zm-45.9938-6.42576c-5.7671-.78155-10.2061-2.22963-13.4896-4.40056-1.3548-.89576-2.2902-1.89766-2.8176-3.01787l-.3929-.83466.036-22.59585.036-22.59585.3281-.61562c.8294-1.55619 2.4465-2.88407 5.0211-4.12288 3.2554-1.56646 7.0095-2.54578 12.2408-3.19328 2.1543-.26664 9.47-.21948 11.6809.0753 8.1415 1.08546 14.4594 3.74551 16.4734 6.93577.7936 1.25717.7731.80148.7731 17.22791v15.08135l-.4466.0692c-.2456.038-.8021.10712-1.2366.15352-4.4834.47873-9.1329 3.57818-11.5162 7.67699l-.488.8391-1.9169.0905c-2.265.10697-3.4191.39711-5.1411 1.29243-2.9567 1.53725-5.0699 4.20232-5.9316 7.48077-.238.90554-.3084 1.56192-.3132 2.92023l-.01 1.75213-.7594-.0162c-.4176-.009-1.3777-.1-2.1335-.20243zm11.7239-20.8271c-1.0818-.91805-2.0174-1.7137-2.0791-1.7681-.062-.0544.1631-.2602.4994-.45733.7458-.43708 1.7061-1.48313 2.1139-2.30274.9965-2.00287.9743-4.49403-.058-6.47634-1.135-2.1802-3.5103-3.3239-6.2014-2.986-1.4735.18503-2.3966.59832-3.3701 1.50899-1.5366 1.4374-2.0688 2.84774-1.988 5.26837.046 1.37622.095 1.62372.4886 2.45901.8471 1.79787 2.6182 3.14163 4.4225 3.35531.6788.0804.7377.1249 2.0865 1.57538l1.3881 1.49264h2.3321 2.3322l-1.9669-1.66919zm-5.885-4.6866c-.9451-.47951-1.304-1.30103-1.304-2.98527 0-1.09589.053-1.41584.3224-1.96387.4309-.875 1.29-1.40105 2.1328-1.30604.829.0934 1.2599.42875 1.6984 1.32149.3327.67762.3808.93439.3769 2.01347 0 1.33108-.2403 2.01354-.9098 2.63622-.6994.65058-1.42.73892-2.3167.284zm-9.5093 3.18974c2.485-.57319 3.8348-2.65434 3.1192-4.80889-.3603-1.0849-1.1219-1.76252-2.9819-2.65327-.859-.41138-1.6272-.83198-1.7071-.93468-.3128-.40184-.3121-.66784 0-1.03351.484-.56269 1.5858-.5896 3.0776-.0752l1.138.39245-.039-1.51877-.039-1.51878-.7558-.17965c-1.143-.2717-3.6136-.2584-4.5856.0247-1.949.56765-2.976 1.84152-2.9696 3.68323.01 1.89537.8605 2.79385 3.8676 4.06981 1.2722.53982 1.4179 1.54865.2807 1.94362-.5263.18278-.6761.17922-1.5089-.0358-.5086-.13132-1.2802-.42314-1.7148-.64849l-.7902-.40974v1.64418 1.64418l.7902.21996c.4346.12098.852.2415.9276.26783.3141.10941 3.3435.0524 3.8879-.0732zm26.5512-1.4376v-1.44294h-2.1988-2.1987v-4.74107-4.74107h-1.7865-1.7865v6.18401 6.184h3.9853 3.9852zm-10.5815-24.74151c3.5835-.41532 6.5241-1.16648 8.3827-2.14132 1.2211-.64044 1.5139-.87116 1.9833-1.56285 1.4515-2.13894-1.7987-4.28958-8.0986-5.35876-5.9187-1.0045-13.7186-.77727-18.7108.54509-10.3005 2.7285-6.2399 7.74058 7.0717 8.7287 2.1847.16217 7.109.0514 9.3717-.21086z"
-      fill="#00bcf2"
-      transform="translate(97.599 -474.268)"
-    />
-  </svg>
+const skillIcon = (src: string, alt: string) => (
+  <img
+    src={src}
+    alt={alt}
+    width={48}
+    height={48}
+    className="h-12 w-12 object-contain"
+  />
 );
 
 const experiences = [
   {
     _id: 1,
-    jobTitle: 'Engineer-I',
-
+    jobTitle: 'Developer 2',
     companyImage:
-      'https://cdn.sanity.io/images/eq7abb07/production/9e2260eb64c673f520b04c0e635b8eda1e747f8c-563x530.png',
-
-    company: 'Illumine-I',
-
-    dateStarted: 'April 2021',
-    dateEnded: 'August 2022',
-    isCurrentlyWorkingHere: false,
+      'https://cdn.sanity.io/images/eq7abb07/production/4fa300b98b7840f9433612d8895762db664fc55c-483x247.png',
+    company: 'Metayb',
+    dateStarted: 'October 2024',
+    dateEnded: 'Present',
+    isCurrentlyWorkingHere: true,
     jd: [
-      'Worked on developing add-ins for CAD automation using C#',
-      'Responsible for developing model quality dashboards using C# and WPF',
-      'Collaborated with cross-functional teams for timely project deliveries.',
+      'Led architecture and development of enterprise SaaS applications.',
+      'Designed scalable REST APIs and responsive React applications on the PERN stack (PostgreSQL, Express.js, React.js, Node.js).',
+      'Led a team of 4 engineers from planning through delivery of a production SaaS product.',
+      'Built a multi-tenant SaaS platform with tenant isolation and tenant-specific workflows.',
+      'Integrated Azure and AWS with third-party authentication, payment, email, and storage services.',
+      'Delivered workflow, reporting, access control, and mobile API features, and resolved security assessment findings.',
     ],
-    svgs: [javscript, csharp],
+    svgs: [
+      reactIcon,
+      nodeJs,
+      skillIcon('/res/icons/postgresql.svg', 'PostgreSQL'),
+      skillIcon('/res/icons/azure.svg', 'Azure'),
+      skillIcon('/res/icons/aws.svg', 'AWS'),
+    ],
   },
   {
     _id: 2,
     jobTitle: 'Full Stack Developer',
-
     companyImage:
       'https://cdn.sanity.io/images/eq7abb07/production/4cc8c005921fb12cdbb21d0c3a5d86b9828b50e0-5000x3178.png',
-
     company: 'TVS Electronics',
-
     dateStarted: 'January 2023',
-    dateEnded: 'Present',
-    jd: [
-      'Responsible for developing products with highly scalable frontend and backend',
-      'Responsible for requirement gathering and converting user stories to user flows and app features',
-      'Developed Apps with React frontend and NodeJS backend',
-    ],
+    dateEnded: 'October 2024',
     isCurrentlyWorkingHere: false,
-    svgs: [htmlIcon, cssIcon, javscript, reactIcon, nodeJs, mongoDB, sql],
+    jd: [
+      'Designed enterprise web applications with the MERN stack for manufacturing and business process automation.',
+      'Built reusable React components that reduced development time across projects.',
+      'Worked with product owners in Agile, planning sprint backlogs and coordinating feature delivery.',
+      'Mentored junior developers through code reviews, architecture discussions, and engineering practices.',
+      'Delivered OPTIM, a BOM and product costing platform, and EYEQ, a quality-assurance app for defect and recall tracking.',
+    ],
+    svgs: [
+      htmlIcon,
+      cssIcon,
+      javscript,
+      reactIcon,
+      nodeJs,
+      mongoDB,
+      skillIcon('/res/icons/sql.svg', 'SQL'),
+    ],
+  },
+  {
+    _id: 3,
+    jobTitle: 'Engineer - I',
+    companyImage:
+      'https://cdn.sanity.io/images/eq7abb07/production/9e2260eb64c673f520b04c0e635b8eda1e747f8c-563x530.png',
+    company: 'Illumine-i',
+    dateStarted: 'April 2021',
+    dateEnded: 'August 2022',
+    isCurrentlyWorkingHere: false,
+    jd: [
+      'Developed web-based 3D model visualization with Autodesk Forge for digital delivery of construction projects.',
+      'Built CAD automation add-ins in C# that removed repetitive engineering workflows.',
+      'Developed model quality dashboards using C# and WPF.',
+    ],
+    svgs: [javscript, csharp],
   },
 ];
 function WorkExperience() {
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const experience = experiences[index];
+
+  const go = (step: number) => {
+    setDirection(step);
+    setIndex(
+      (current) => (current + step + experiences.length) % experiences.length
+    );
+  };
+
+  const goTo = (nextIndex: number) => {
+    if (nextIndex === index) return;
+    setDirection(nextIndex > index ? 1 : -1);
+    setIndex(nextIndex);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className="h-screen flex relative overflow-hidden flex-col md:flex-row max-w-full md:p-10  justify-evenly md:mx-auto items-center"
+      className="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center justify-start px-4 pb-6 pt-24 md:h-screen md:justify-center md:overflow-hidden md:px-8 md:pb-0 md:pt-0"
     >
-      <h3 className="absolute z-10 top-24 uppercase tracking-[5px] md:tracking-[15px] text-gray-500 text-xl">
+      <h3 className="mb-4 text-center text-xl uppercase tracking-[5px] text-gray-500 md:absolute md:top-24 md:mb-0 md:tracking-[15px]">
         Work Experience
       </h3>
-      <div
-        className="w-full flex mt-12 justify-center  space-x-8 pr-8 xl:space-x-2 
-    
-       snap-x snap-mandatory overflow-scroll px-72  md:p-0 md:overflow-hidden scrollbar-thumb-red-500"
-      >
-        {experiences?.map((experience: any) => (
-          <ExperienceCard key={experience._id} experience={experience} />
-        ))}
+
+      <div className="relative flex w-full items-center md:mt-16">
+        <button
+          type="button"
+          aria-label="Previous experience"
+          onClick={() => go(-1)}
+          className="absolute left-0 z-20 hidden h-11 w-11 items-center justify-center rounded-full border border-gray-600 bg-[#1d1d1d]/80 text-gray-200 transition hover:border-red-500 hover:text-white md:flex"
+        >
+          <ChevronLeftIcon className="h-6 w-6" />
+        </button>
+
+        <div
+          className="w-full md:px-16"
+          onTouchStart={(event) => {
+            const touch = event.changedTouches[0];
+            touchStart.current = { x: touch.clientX, y: touch.clientY };
+          }}
+          onTouchEnd={(event) => {
+            if (!touchStart.current) return;
+            const touch = event.changedTouches[0];
+            const deltaX = touch.clientX - touchStart.current.x;
+            const deltaY = touch.clientY - touchStart.current.y;
+            if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+              go(deltaX < 0 ? 1 : -1);
+            }
+            touchStart.current = null;
+          }}
+        >
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={experience._id}
+              custom={direction}
+              initial={{ opacity: 0, x: direction > 0 ? 36 : -36 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction > 0 ? -36 : 36 }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
+            >
+              <ExperienceCard experience={experience} />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <button
+          type="button"
+          aria-label="Next experience"
+          onClick={() => go(1)}
+          className="absolute right-0 z-20 hidden h-11 w-11 items-center justify-center rounded-full border border-gray-600 bg-[#1d1d1d]/80 text-gray-200 transition hover:border-red-500 hover:text-white md:flex"
+        >
+          <ChevronRightIcon className="h-6 w-6" />
+        </button>
       </div>
+
+      <div className="mt-4 flex w-full items-center justify-center gap-2 md:mt-6 md:gap-3">
+        <button
+          type="button"
+          aria-label="Previous experience"
+          onClick={() => go(-1)}
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-600 bg-[#1d1d1d] text-gray-200 md:hidden"
+        >
+          <ChevronLeftIcon className="h-5 w-5" />
+        </button>
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          {experiences.map((item, itemIndex) => {
+            const selected = itemIndex === index;
+            return (
+              <button
+                key={item._id}
+                type="button"
+                aria-current={selected ? 'true' : undefined}
+                onClick={() => goTo(itemIndex)}
+                className={`rounded-full px-3 py-1 text-xs transition sm:px-4 sm:py-1.5 sm:text-sm ${
+                  selected
+                    ? 'bg-white/10 text-white ring-1 ring-red-500'
+                    : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                }`}
+              >
+                {item.company}
+              </button>
+            );
+          })}
+        </div>
+        <button
+          type="button"
+          aria-label="Next experience"
+          onClick={() => go(1)}
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-600 bg-[#1d1d1d] text-gray-200 md:hidden"
+        >
+          <ChevronRightIcon className="h-5 w-5" />
+        </button>
+      </div>
+      <p className="mt-3 text-xs uppercase tracking-[0.2em] text-gray-500">
+        {index + 1} / {experiences.length}
+      </p>
     </motion.div>
   );
 }
