@@ -5,7 +5,6 @@ import { useTypewriter, Cursor } from 'react-simple-typewriter';
 import BackgroundCircle from './ui/BackgroundCircle';
 import Link from 'next/link';
 import { PageInfo } from '../typings';
-import ProfilePic from './../public/res/KewinC1.jpg';
 type Props = {
   pageInfo: PageInfo;
 };
@@ -26,9 +25,9 @@ function Hero() {
       <BackgroundCircle />
       <div className="bg-white rounded-full w-14 h-14 overflow-hidden relative self-center float content-center justify-center object-cover">
         <img
-          src="https://cdn.sanity.io/images/eq7abb07/production/b654ca01aebfc9d87dae474e6bed1b9530d0ac68-2218x2116.jpg"
+          src="/res/KewinProfPh.png"
           alt="profilePic"
-          className="object-cover w-14 h-14"
+          className="h-14 w-14 object-cover object-[38%_22%]"
         />
       </div>
       <div className="z-20">

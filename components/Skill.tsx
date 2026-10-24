@@ -18,7 +18,9 @@ function Skill({ svg, directionLeft, name }: Props) {
       >
         <div className="self-center justify-self-center">
           {svg}
-          <p className="text-center text-gray-400">{name}</p>
+          <p className="text-center text-[11px] leading-tight text-gray-400 md:text-sm">
+            {name}
+          </p>
         </div>
       </motion.div>
     </div>

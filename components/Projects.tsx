@@ -1,14 +1,6 @@
-import Image from 'next/image';
-import React from 'react';
-
-import { motion } from 'framer-motion';
-import { Project } from '../typings';
-
-import Link from 'next/link';
-
-type Props = {
-  projects: Project[];
-};
+import React, { useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 const projects = [
   {
@@ -92,73 +84,138 @@ const projects = [
 ];
 
 function Projects() {
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const project = projects[index];
+
+  const go = (step: number) => {
+    setDirection(step);
+    setIndex(
+      (current) => (current + step + projects.length) % projects.length
+    );
+  };
+
+  const goTo = (nextIndex: number) => {
+    if (nextIndex === index) return;
+    setDirection(nextIndex > index ? 1 : -1);
+    setIndex(nextIndex);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 2 }}
-      className="h-screen relative flex 
-    overflow-hidden 
-    flex-col items-center justify-evenly mx-auto z-0"
+      transition={{ duration: 1 }}
+      className="relative z-0 mx-auto flex h-screen flex-col items-center justify-center overflow-hidden"
     >
-      <h3
-        className="absolute z-10 top-24 uppercase 
-        tracking-[5px] md:tracking-[15px]
-        text-gray-500 
-        text-xl"
-      >
+      <h3 className="absolute top-24 z-10 text-xl uppercase tracking-[5px] text-gray-500 md:tracking-[15px]">
         Projects
       </h3>
 
-      <div
-        className="relative w-full 
-        flex overflow-x-scroll gap-10
-      overflow-y-hidden snap-x snap-mandatory z-20 px-7 md:scrollbar sm:scrollbar-thin scrollbar-track-gray-700/20 scrollbar-thumb-red-700"
-      >
-        {projects.map((project) => (
-          <div
-            key={project?._id}
-            className="flex flex-col w-screen relative items-center justify-center p-32 md:px-[450px] snap-center"
-          >
-            <div className=" mx-auto my-auto mb-3 sm:w-[300px] sm:h-[275px] md:w-[400px] md:h-auto ">
-              {' '}
-              <motion.img
-                initial={{
-                  y: -100,
-                  opacity: 0,
-                }}
-                transition={{ duration: 1.2 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+      <div className="absolute top-[30%] z-10 h-[40%] w-full -skew-y-6 bg-red-800 opacity-20" />
+
+      <div className="relative z-20 mt-10 flex w-full max-w-5xl items-center px-2">
+        <button
+          type="button"
+          aria-label="Previous project"
+          onClick={() => go(-1)}
+          className="absolute left-2 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-gray-600 bg-[#1d1d1d]/80 text-gray-200 transition hover:border-red-500 hover:text-white md:left-0"
+        >
+          <ChevronLeftIcon className="h-6 w-6" />
+        </button>
+
+        <div
+          className="w-full px-14"
+          onTouchStart={(event) => {
+            const touch = event.changedTouches[0];
+            touchStart.current = { x: touch.clientX, y: touch.clientY };
+          }}
+          onTouchEnd={(event) => {
+            if (!touchStart.current) return;
+            const touch = event.changedTouches[0];
+            const deltaX = touch.clientX - touchStart.current.x;
+            const deltaY = touch.clientY - touchStart.current.y;
+            if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+              go(deltaX < 0 ? 1 : -1);
+            }
+            touchStart.current = null;
+          }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={project._id}
+              initial={{ opacity: 0, x: direction > 0 ? 36 : -36 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction > 0 ? -36 : 36 }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
+              className="flex flex-col items-center"
+            >
+              <img
                 src={project.image}
-                className=" object-contain w-[400px] h-auto"
-                alt="project image"
-              ></motion.img>
-            </div>
-            <div className="text-xl font-semibold text-center px-8 space-y-3 w-[400px] md:w-[600px] xl:w-[800px] ">
-              <h4 className="underline decoration-red-600 text-gray-300">
-                {project?.title}
-              </h4>
-              <p className="text-sm md:text-lg font-normal text-gray-400">
-                {project?.summary}
-              </p>
-            </div>
-            <div className="flex flex-row gap-1 mt-3">
-              <div className="px-3 py-1 bg-slate-300 text-red-700 hover:text-red-500 rounded-md">
-                <Link href={project?.gitHubLink || '#'}>Github</Link>
+                alt={project.title}
+                className="h-auto max-h-[240px] w-full max-w-[560px] object-contain md:max-h-[280px]"
+              />
+              <div className="mt-4 max-w-3xl space-y-3 px-2 text-center">
+                <h4 className="text-xl font-semibold text-gray-300 underline decoration-red-600">
+                  {project.title}
+                </h4>
+                <p className="text-sm font-normal text-gray-400 md:text-lg">
+                  {project.summary}
+                </p>
               </div>
-              <div className="px-3 py-1 bg-slate-300 text-red-700 hover:text-red-500 rounded-md">
-                <Link href={project?.siteLink || '#'}>Site</Link>
+              <div className="mt-4 flex gap-2">
+                <a
+                  href={project.gitHubLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-md bg-slate-300 px-3 py-1 text-red-700 hover:text-red-500"
+                >
+                  Github
+                </a>
+                <a
+                  href={project.siteLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-md bg-slate-300 px-3 py-1 text-red-700 hover:text-red-500"
+                >
+                  Site
+                </a>
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="absolute bottom-16 text-gray-400 text-xs md:text-xs">
-        Please scroll right to view all projects
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <button
+          type="button"
+          aria-label="Next project"
+          onClick={() => go(1)}
+          className="absolute right-2 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-gray-600 bg-[#1d1d1d]/80 text-gray-200 transition hover:border-red-500 hover:text-white md:right-0"
+        >
+          <ChevronRightIcon className="h-6 w-6" />
+        </button>
       </div>
 
-      <div className="w-full absolute top-[30%] h-[40%] bg-red-800 opacity-20 -skew-y-6 z-10"></div>
+      <div className="z-20 mt-6 flex items-center gap-2">
+        {projects.map((item, itemIndex) => {
+          const selected = itemIndex === index;
+          return (
+            <button
+              key={item._id}
+              type="button"
+              aria-label={item.title}
+              aria-current={selected ? 'true' : undefined}
+              onClick={() => goTo(itemIndex)}
+              className={`h-2.5 rounded-full transition ${
+                selected ? 'w-8 bg-red-500' : 'w-2.5 bg-gray-500 hover:bg-gray-300'
+              }`}
+            />
+          );
+        })}
+      </div>
+      <p className="z-20 mt-3 text-xs uppercase tracking-[0.2em] text-gray-500">
+        {index + 1} / {projects.length}
+      </p>
     </motion.div>
   );
 }

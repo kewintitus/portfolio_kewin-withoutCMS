@@ -35,8 +35,8 @@ function About() {
          md:rounded-lg md:w-40 md:h-60 xl:w-[250px] xl:h-[350px] object-cover "
       >
         <img
-          src="https://cdn.sanity.io/images/eq7abb07/production/b654ca01aebfc9d87dae474e6bed1b9530d0ac68-2218x2116.jpg"
-          className="object-center object-cover mt-1 align-bottom bg-transparent w-[150px] h-[150px] md:rounded-lg md:w-40 md:h-60  xl:w-[250px] xl:h-[350px]"
+          src="/res/KewinProfPh.png"
+          className="mt-1 h-[150px] w-[150px] bg-transparent object-cover object-[38%_22%] align-bottom md:h-60 md:w-40 md:rounded-lg md:object-[42%_18%] xl:h-[350px] xl:w-[250px]"
           alt="profile pic"
         />
       </motion.div>
