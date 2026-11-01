@@ -2,7 +2,7 @@
   "sequences": {
     "F": 4,
     "T": 3,
-    "ST": 3
+    "ST": 6076324778
   },
   "features": [
     {
@@ -56,6 +56,39 @@
               "createdBy": "Kewin Titus",
               "createdAt": "2026-11-01T07:30:04.815Z",
               "updatedAt": "2026-11-01T07:30:08.386Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "F-A695F29394",
+      "name": "AWS-1",
+      "description": "",
+      "active": true,
+      "createdBy": "Kewin Titus",
+      "createdAt": "2026-11-01T12:29:41.397Z",
+      "updatedAt": "2026-11-01T12:29:41.397Z",
+      "tasks": [
+        {
+          "id": "T-A374407A87",
+          "name": "AWS Setup",
+          "description": "",
+          "active": true,
+          "commitType": "feat",
+          "createdBy": "Kewin Titus",
+          "createdAt": "2026-11-01T12:30:04.560Z",
+          "updatedAt": "2026-11-01T12:30:04.560Z",
+          "subtasks": [
+            {
+              "id": "ST-6076324777",
+              "name": "AWS-Init",
+              "description": "",
+              "active": true,
+              "status": "in-progress",
+              "createdBy": "Kewin Titus",
+              "createdAt": "2026-11-01T12:48:43.439Z",
+              "updatedAt": "2026-11-01T12:52:27.930Z"
             }
           ]
         }
