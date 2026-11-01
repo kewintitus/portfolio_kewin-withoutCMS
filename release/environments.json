@@ -1,0 +1,17 @@
+{
+  "devBranch": "dev",
+  "environments": {
+    "QAS": {
+      "branch": "qas",
+      "features": {}
+    },
+    "UAT": {
+      "branch": "uat",
+      "features": {}
+    },
+    "PROD": {
+      "branch": "main",
+      "features": {}
+    }
+  }
+}
