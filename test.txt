@@ -5,3 +5,5 @@ Adding Payment Integration
 Initialize Mailer setup
 
 added aws setup
+
+aws setup complete
