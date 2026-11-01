@@ -1,0 +1,31 @@
+{
+  "sequences": {
+    "F": 3,
+    "T": 2,
+    "ST": 2
+  },
+  "features": [
+    {
+      "id": "F-2",
+      "name": "RAZOR_PAY",
+      "description": "Init",
+      "active": true,
+      "tasks": [
+        {
+          "id": "T-1",
+          "name": "UI",
+          "description": "UI Definition",
+          "active": true,
+          "subtasks": [
+            {
+              "id": "ST-1",
+              "name": "Setup",
+              "description": "ui setup",
+              "active": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
