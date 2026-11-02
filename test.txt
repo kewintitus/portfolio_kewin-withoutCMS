@@ -7,3 +7,5 @@ Initialize Mailer setup
 added aws setup
 
 aws setup complete
+
+Added termii Integration

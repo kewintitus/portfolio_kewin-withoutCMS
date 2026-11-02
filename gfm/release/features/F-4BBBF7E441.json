@@ -1,0 +1,33 @@
+{
+  "id": "F-4BBBF7E441",
+  "name": "APP_SMS_INTEGRATION",
+  "description": "",
+  "active": true,
+  "createdBy": "Kewin Titus",
+  "createdAt": "2026-11-02T15:28:40.784Z",
+  "updatedAt": "2026-11-02T15:28:40.784Z",
+  "tasks": [
+    {
+      "id": "T-A10FEEDD26",
+      "name": "termii sms setup",
+      "description": "",
+      "active": true,
+      "commitType": "feat",
+      "createdBy": "Kewin Titus",
+      "createdAt": "2026-11-02T15:29:25.535Z",
+      "updatedAt": "2026-11-02T15:29:25.535Z",
+      "subtasks": [
+        {
+          "id": "ST-41158E4680",
+          "name": "api setup - termii v3",
+          "description": "",
+          "active": true,
+          "status": "completed",
+          "createdBy": "Kewin Titus",
+          "createdAt": "2026-11-02T15:30:08.829Z",
+          "updatedAt": "2026-11-02T16:03:55.802Z"
+        }
+      ]
+    }
+  ]
+}

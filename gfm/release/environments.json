@@ -1,6 +1,27 @@
 {
   "devBranch": "dev",
   "environments": {
+    "DEV": {
+      "branch": "dev",
+      "features": {
+        "F-4BBBF7E441": {
+          "commits": [
+            {
+              "source": "6126c549dff2c3cb05b4e4b4c7d025323aa1233a",
+              "promoted": ""
+            },
+            {
+              "source": "bbb06d96b1f721b159c21c337f9b3e92af958a83",
+              "promoted": ""
+            },
+            {
+              "source": "81c151e6454d93ac977c8b1ced52bf250fc1d312",
+              "promoted": ""
+            }
+          ]
+        }
+      }
+    },
     "QAS": {
       "branch": "qas",
       "features": {}
@@ -13,5 +34,6 @@
       "branch": "main",
       "features": {}
     }
-  }
+  },
+  "prepared": {}
 }
